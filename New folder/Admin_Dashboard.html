@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        /* General CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #f8f8f8;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #34495e;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #ecf0f1;
+        }
+
+        .sidebar button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 12px 0;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 80%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .sidebar button:hover {
+            background-color: #1abc9c;
+            transform: scale(1.05);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            margin-left: 250px;
+            background-color: #ecf0f1;
+        }
+
+        .dashboard-card {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .label, .input, .textarea, .select, .button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .label {
+            font-size: 18px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        .input, .textarea, .select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+
+        .input:focus, .textarea:focus, .select:focus {
+            background-color: #ffffff;
+            border-color: #1abc9c;
+        }
+
+        .textarea {
+            height: 100px;
+        }
+
+        .button {
+            background-color: #1abc9c;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Dashboard</h2>
+    <button onclick="showSection('accountForm')">Account</button>
+    <button onclick="showSection('reportsSection')">Reports</button>
+    <button onclick="showSection('userOverview')">User Overview</button>
+    <button onclick="showSection('courseManagement')">Courses</button>
+    <button onclick="showSection('activities')">Activities</button>
+</div>
+
+<div class="main-content">
+    <!-- Account Form -->
+    <div id="accountForm" class="dashboard-card">
+        <h3>Account</h3>
+        <label class="label">First Name</label>
+        <input type="text" class="input" placeholder="Enter First Name">
+        <label class="label">Last Name</label>
+        <input type="text" class="input" placeholder="Enter Last Name">
+        <label class="label">Middle Name</label>
+        <input type="text" class="input" placeholder="Enter Middle Name">
+        <label class="label">Birthdate</label>
+        <input type="date" class="input">
+        <label class="label">Sex</label>
+        <select class="select">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <label class="label">Email</label>
+        <input type="email" class="input" placeholder="Enter Email">
+        <label class="label">Username</label>
+        <input type="text" class="input" placeholder="Enter Username">
+        <label class="label">Password</label>
+        <input type="password" class="input" placeholder="Enter Password">
+        <label class="label">Account Type</label>
+        <select class="select">
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+        </select>
+        <button class="button">Submit</button>
+    </div>
+
+    <!-- Reports Section -->
+    <div id="reportsSection" class="dashboard-card" style="display: none;">
+        <h3>Reports</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Time and Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="showReportResponse(1, 'Issue with Login', 'Users cannot log in.', '2024-12-01 10:30 AM')">
+                    <td>1</td>
+                    <td>Issue with Login</td>
+                    <td>Users cannot log in.</td>
+                    <td>2024-12-01 10:30 AM</td>
+                </tr>
+                <tr onclick="showReportResponse(2, 'Website Slow', 'Website is slow during traffic.', '2024-12-02 03:45 PM')">
+                    <td>2</td>
+                    <td>Website Slow</td>
+                    <td>Website is slow during traffic.</td>
+                    <td>2024-12-02 03:45 PM</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="responseArea" style="display: none;">
+            <label class="label">Response for Report <span id="reportId"></span>: <span id="reportTitle"></span></label>
+            <textarea class="textarea" id="responseText" placeholder="Enter your response here..."></textarea>
+            <button class="button" onclick="submitResponse()">Submit Response</button>
+        </div>
+    </div>
+
+    <!-- User Overview -->
+    <div id="userOverview" class="dashboard-card" style="display: none;">
+        <h3>User Overview</h3>
+        <div class="stat">Total Students: 100</div>
+        <div class="stat">Total Instructors: 20</div>
+        <div class="stat">Total Admins: 5</div>
+    </div>
+
+    <!-- Course Management -->
+    <div id="courseManagement" class="dashboard-card" style="display: none;">
+        <h3>Courses</h3>
+        <div class="stat">Total Courses: 10</div>
+    </div>
+
+    <!-- Activities -->
+    <div id="activities" class="dashboard-card" style="display: none;">
+        <h3>Activities</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quiz 1</td>
+                    <td>Introduction to Algebra</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.dashboard-card');
+        sections.forEach(section => section.style.display = 'none');
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function showReportResponse(reportId, title, description, date) {
+        document.getElementById('responseArea').style.display = 'block';
+        document.getElementById('reportId').textContent = reportId;
+        document.getElementById('reportTitle').textContent = title;
+    }
+
+    function submitResponse() {
+        const responseText = document.getElementById('responseText').value;
+        alert(`Response submitted: ${responseText}`);
+        document.getElementById('responseText').value = "";
+        document.getElementById('responseArea').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
