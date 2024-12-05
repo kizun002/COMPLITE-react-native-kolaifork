@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Link the external CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Dashboard</h2>
+    <button onclick="showSection('accountForm')">Account</button>
+    <button onclick="showSection('reportsSection')">Reports</button>
+    <button onclick="showSection('userOverview')">User Overview</button>
+    <button onclick="showSection('courseManagement')">Courses</button>
+    <button onclick="showSection('activities')">Activities</button>
+</div>
+
+<div class="main-content">
+    <!-- Account Form -->
+    <div id="accountForm" class="dashboard-card">
+        <h3>Account</h3>
+        <label class="label">First Name</label>
+        <input type="text" class="input" placeholder="Enter First Name">
+        <label class="label">Last Name</label>
+        <input type="text" class="input" placeholder="Enter Last Name">
+        <label class="label">Middle Name</label>
+        <input type="text" class="input" placeholder="Enter Middle Name">
+        <label class="label">Birthdate</label>
+        <input type="date" class="input">
+        <label class="label">Sex</label>
+        <select class="select">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <label class="label">Email</label>
+        <input type="email" class="input" placeholder="Enter Email">
+        <label class="label">Username</label>
+        <input type="text" class="input" placeholder="Enter Username">
+        <label class="label">Password</label>
+        <input type="password" class="input" placeholder="Enter Password">
+        <label class="label">Account Type</label>
+        <select class="select">
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+        </select>
+        <button class="button">Submit</button>
+    </div>
+
+    <!-- Reports Section -->
+    <div id="reportsSection" class="dashboard-card" style="display: none;">
+        <h3>Reports</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Time and Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="showReportResponse(1, 'Issue with Login', 'Users cannot log in.', '2024-12-01 10:30 AM')">
+                    <td>1</td>
+                    <td>Issue with Login</td>
+                    <td>Users cannot log in.</td>
+                    <td>2024-12-01 10:30 AM</td>
+                </tr>
+                <tr onclick="showReportResponse(2, 'Website Slow', 'Website is slow during traffic.', '2024-12-02 03:45 PM')">
+                    <td>2</td>
+                    <td>Website Slow</td>
+                    <td>Website is slow during traffic.</td>
+                    <td>2024-12-02 03:45 PM</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="responseArea" style="display: none;">
+            <label class="label">Response for Report <span id="reportId"></span>: <span id="reportTitle"></span></label>
+            <textarea class="textarea" id="responseText" placeholder="Enter your response here..."></textarea>
+            <button class="button" onclick="submitResponse()">Submit Response</button>
+        </div>
+    </div>
+
+    <!-- User Overview -->
+    <div id="userOverview" class="dashboard-card" style="display: none;">
+        <h3>User Overview</h3>
+        <div class="stat">Total Students: 100</div>
+        <div class="stat">Total Instructors: 20</div>
+        <div class="stat">Total Admins: 5</div>
+    </div>
+
+    <!-- Course Management -->
+    <div id="courseManagement" class="dashboard-card" style="display: none;">
+        <h3>Courses</h3>
+        <div class="stat">Total Courses: 10</div>
+    </div>
+
+    <!-- Activities -->
+    <div id="activities" class="dashboard-card" style="display: none;">
+        <h3>Activities</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quiz 1</td>
+                    <td>Introduction to Algebra</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Link the external JavaScript -->
+<script src="scripts.js"></script>
+</body>
+</html>

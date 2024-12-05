@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #333;
+            width: 70%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: darkgrey;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .label {
+            font-size: 16px;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .input, .picker, .button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: none;
+        }
+        .input {
+            background-color: white;
+            color: gray;
+        }
+        .picker {
+            background-color: white;
+        }
+        .button {
+            background-color: brown;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: darkbrown;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .buttons-container button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .buttons-container button:hover {
+            background-color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Buttons for selecting between Sign-Up and Login -->
+    <div class="buttons-container">
+        <button onclick="showSignup()">Sign Up</button>
+        <button onclick="showLogin()">Login</button>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signupForm" class="form-container">
+        <div class="logo">Account</div>
+        
+        <div class="label">First Name</div>
+        <input type="text" class="input" placeholder="Enter First Name">
+        
+        <div class="label">Last Name</div>
+        <input type="text" class="input" placeholder="Enter Last Name">
+        
+        <div class="label">Middle Name</div>
+        <input type="text" class="input" placeholder="Enter Middle Name">
+        
+        <div class="label">Birthdate</div>
+        <input type="date" class="input">
+        
+        <div class="label">Sex</div>
+        <select class="picker">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        
+        <div class="label">Email</div>
+        <input type="email" class="input" placeholder="Enter Email">
+        
+        <div class="label">Username</div>
+        <input type="text" class="input" placeholder="Enter Username">
+        
+        <div class="label">Password</div>
+        <input type="password" class="input" placeholder="Enter Password">
+        
+        <div class="label">Account Type</div>
+        <select class="picker">
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+        </select>
+        
+        <button class="button">Submit</button>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="form-container" style="display: none;">
+        <div class="logo">Account</div>
+
+        <div class="label">Username</div>
+        <input type="text" class="input" placeholder="Enter Username">
+        
+        <div class="label">Password</div>
+        <input type="password" class="input" placeholder="Enter Password">
+        
+        <button class="button">Login</button>
+    </div>
+</div>
+
+<script>
+    function showSignup() {
+        document.getElementById("signupForm").style.display = "block";
+        document.getElementById("loginForm").style.display = "none";
+    }
+
+    function showLogin() {
+        document.getElementById("signupForm").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
